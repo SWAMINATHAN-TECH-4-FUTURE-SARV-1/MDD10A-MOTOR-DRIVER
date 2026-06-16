@@ -1,0 +1,26 @@
+#include <Arduino.h>
+
+const int pwmPin = 18; 
+const int dirPin = 19; 
+const int duty = 179;  // ~70% of 255
+
+void setup() {
+  pinMode(dirPin, OUTPUT);
+  pinMode(pwmPin, OUTPUT);
+
+  //stopped in starting
+  digitalWrite(dirPin, LOW);
+  analogWrite(pwmPin, 0);
+}
+
+void loop() {
+  // forward for 2 seconds
+  digitalWrite(dirPin, HIGH);
+  analogWrite(pwmPin, duty);
+  delay(2000);
+
+  // Stop for 2 seconds
+  analogWrite(pwmPin, 0);
+  digitalWrite(dirPin, LOW);
+  delay(2000);
+}
